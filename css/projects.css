@@ -1,0 +1,793 @@
+.navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+    padding: 1rem 2.5rem; /* Increased horizontal padding */
+    box-shadow: 0 2px 10px rgba(255, 105, 180, 0.1);
+    z-index: 1000 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box; /* Add this to include padding in width calculation */
+    border-bottom: 1px solid #2ecc71;
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-top a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(96, 165, 250, 0.1);
+    color:  #2ecc71;
+    text-decoration: none;
+    border-radius: 50%;
+    border: 2px solid  #2ecc71;
+    box-shadow: 0 0 15px  #207644;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.scroll-top a::before {
+    content: '↑';
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 0 0 5px  #2ecc71;
+}
+
+.scroll-top a:hover {
+    background: rgba(96, 165, 250, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #207644;
+    border-color: #fff;
+    color: #fff;
+}
+
+
+/* Most specific selector for navbar */
+body .navbar,
+.projects-page .navbar {
+    padding: 1rem 2.5rem !important;
+    /* Other properties remain the same */
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    margin-left: 2rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    margin-right: 1rem; /* Add right margin */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    flex-shrink: 0; /* Prevent text from shrinking */
+}
+
+.nav-brand a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: 'Orbitron', sans-serif;
+    flex-shrink: 0; /* Prevent brand from shrinking */
+    transition: color 0.3s ease;
+    color: #2ecc71;
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        padding: 0.8rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+        margin-bottom: 20rem;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    .nav-brand a {
+        font-size: 1.3rem;
+    }
+    
+    .navbar {
+        padding: 0.75rem;
+    }
+
+    .nav-links {
+        gap: 0.8rem;
+        margin-left: 0.5rem;
+        font-size: 2rem;
+    }
+    
+    .nav-brand {
+        padding-right: 0.5rem;
+    }
+
+    .scroll-progress-bar {
+        top: 50px;
+        height: 2px;
+    }
+}
+/* In the NAVIGATION section */
+
+/* Index page - brand highlight */
+.index-page .nav-brand a {
+    color: #fff;
+}
+
+.index-page .nav-brand a:hover {
+    color: #60a5fa;
+}
+
+.nav-links a[href="projects.html"]:hover {
+    color: #2ecc71;
+}
+
+/* About hover - Pink */
+.nav-links a[href="about.html"]:hover {
+    color: #ff69b4;
+}
+
+/* Contact link hover - highest specificity to ensure purple */
+body .navbar .nav-links a[href*="contact-section"]:hover,
+.index-page .navbar .nav-links a[href*="contact-section"]:hover,
+.about-page .navbar .nav-links a[href*="contact-section"]:hover,
+.projects-page .navbar .nav-links a[href*="contact-section"]:hover {
+    color: #800080 !important;
+}
+
+/* Projects page - projects link highlight */
+.projects-page .nav-links a[href="projects.html"] {
+    color: #fff;
+}
+
+.projects-page .nav-links a[href="projects.html"]:hover {
+    color: #2ecc71;
+}
+
+/* About page - about link highlight */
+.about-page .nav-links a[href="about.html"] {
+    color: #fff;
+}
+
+.about-page .nav-links a[href="about.html"]:hover {
+    color: #60a5fa;
+}
+
+
+/* Add this new style for the active page link */
+.nav-links a[href="projects.html"] {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+.nav-brand a:hover {
+    color: #60a5fa;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #2ecc71;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+/* Add this to your existing navbar styles */
+@media (max-width: 768px) {
+    .content {
+        margin-top: 120px;
+        padding: 1rem;
+        padding-top: 3rem; /* Added padding */
+    }
+
+    .page-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: auto;
+        max-height: 80px; /* Increased from 60px */
+        padding: 0.5rem 1rem;
+        z-index: 999;
+    }
+
+    .category h2::after {
+        content: '▼';
+        margin-left: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.expanded .category h2::after {
+        transform: rotate(180deg);
+    }
+
+    .sidebar.expanded {
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+
+    .category h2 {
+        cursor: pointer;
+        margin: 0;
+        padding: 1rem;
+    }
+    
+    .scroll-progress-bar {
+        top: 60px;
+    }
+
+    .project-grid {
+        margin-top: 3rem; /* Added margin */
+        padding: 0 1rem;
+        grid-template-columns: 1fr;
+    }
+
+    .project-box {
+        grid-template-columns: 1fr;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .project-preview {
+        max-width: 100%;
+        height: 200px;
+    }
+
+    .nav-brand a {
+        font-size: 1.25rem;
+        margin-right: 0.15rem;
+    }
+
+    .nav-links {
+        gap: 0.8rem;
+        margin-left: 0.5rem;
+        font-size: 1rem;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: 'Orbitron', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+}
+
+.page-container {
+    display: flex;
+    padding-top: 20px;
+    background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+}
+
+.sidebar {
+    width: 300px;
+    min-width: 300px;
+    background: rgba(26, 71, 42, 0.1);
+    padding: 1rem;
+    height: 100vh;
+    position: sticky;
+    top: 80px;
+    overflow-y: auto;
+    border: 1px solid #2ecc71;
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.3);
+}
+
+h2 {
+    color: #4ade80;
+    text-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 40px; /* Increased from 20px to 40px */
+}
+
+h3 {
+    color: #98ffc1;
+    text-shadow: 0 0 15px rgba(152, 255, 193, 0.3);
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    width: 100%;
+    display: block;
+    font-size: 1rem;
+    text-align: left;
+    white-space: nowrap;
+    overflow: visible;
+    margin-top: 4rem;
+}
+
+
+
+
+
+.category h2 {
+    color: #2ecc71;
+    font-size: 1.8rem;
+    margin-top: auto;
+    border-bottom: 2px solid #1a472a;
+    padding-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(26, 71, 42, 0.3);
+}
+
+.category {
+    color: #4ade80; /* Matching green shade */
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+.category-link {
+    color: #86efac; /* Light mint green */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 8px;
+    display: block;
+    border-radius: 5px;
+    font-family: 'Orbitron', sans-serif;
+    word-wrap: break-word;
+    font-size: clamp(0.7rem, 2vw, 1rem);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    display: block;
+    transform-origin: left;
+    transform: scale(var(--scale, 1));
+    margin-bottom: 0.3rem;
+}
+
+/* Add this JavaScript to your page to dynamically scale text */
+.category-link:hover {
+    background: rgba(152, 255, 193, 0.2); /* Matching hover effect */
+    color: #ffffff;
+}
+
+.category-link.active {
+    background: rgba(152, 255, 193, 0.438);
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+    transform: translateX(5px);
+}
+.category ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.content {
+    margin-top: 50px;
+    flex: 1;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+    color: #fff;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 0 2rem;
+}
+
+.project-box {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Change from 1fr 300px to 2fr 1fr */
+    gap: 2rem;
+    background: rgba(26, 71, 42, 0.1);
+    padding: 1rem;
+    padding-right: 0.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    border: 1px solid #2ecc71;
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.3);
+    transition: all 0.3s ease;
+}
+
+#figma .project-box {
+    margin-top: 20px;
+}
+
+.project-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(46, 204, 113, 0.5);
+}
+
+.project-box:hover .project-preview img {
+    transform: scale(1.05);
+}
+
+.project-preview::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(26, 71, 42, 0) 0%,
+        rgba(26, 71, 42, 0.2) 100%
+    );
+    pointer-events: none;
+}
+
+.project-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background: rgba(10, 10, 10, 0.8);
+}
+
+.project-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #4ade80; /* Matching green shade */
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+}
+
+.project p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #e2e8f0; /* Lighter color for better contrast */
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5rem;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #2ecc71, #1a472a); /* Green gradient */
+    z-index: 1000;
+    transition: width 0.05s ease-out, top 0.3s ease;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.3); /* Green glow */
+}
+
+.tag {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* Tag-specific colors */
+.tag.html { 
+    background: #FFE4E1; 
+    color: #FF6347; 
+}
+
+.tag.css { 
+    background: #E6F3FF; 
+    color: #0066CC; 
+}
+
+.tag.js { 
+    background: #FFF8E1; 
+    color: #FFA000; 
+}
+
+.tag.python { 
+    background: #F3E5F5; 
+    color: #7B1FA2; 
+}
+
+.tag.figma { 
+    background: #d89ece; 
+    color: #9f4e90; 
+}
+
+.tag.wordpress {
+    background: #21759b;
+    color: #ffffff;
+}
+
+.tag.illustrator {
+    background: #FF9A00;
+    color: #330000;
+}
+
+.tag.java {
+    background: #f89820;
+    color: #ffffff;
+}
+
+.tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.button {
+    background: rgba(26, 71, 42, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    border: 1px solid #2ecc71;
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.3);
+}
+
+.live-button {
+    background: rgba(26, 42, 71, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    border: 1px solid #2ecc71;
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.3);
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0;
+}
+
+.button:hover {
+    background: #1a472a;
+    box-shadow: 0 0 30px rgba(46, 204, 113, 0.5);
+}
+
+.modal-header {
+    background: rgba(26, 71, 42, 0.1);
+    border-bottom: 1px solid #2ecc71;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal {
+    background-color: rgba(10, 10, 10, 0.9);
+}
+
+.modal-content {
+    background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+    border: 1px solid #2ecc71;
+    box-shadow: 0 0 30px rgba(46, 204, 113, 0.3);
+    color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.modal-content:hover {
+    box-shadow: 0 0 40px rgba(46, 204, 113, 0.5);
+}
+
+.modal .btn-close,
+button.btn-close {
+    background-color: #1a472a;
+    border: 2px solid #1a472a;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    filter: invert(1);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.modal .btn-close:hover,
+button.btn-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+    background-color: #2a704d;
+    border-color: #2a704d;
+    box-shadow: 0 0 15px rgba(26, 71, 42, 0.5);
+}
+
+
+.close-modal {
+    color: #1a472a;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #1a472a;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #fff;
+    background: #1a472a;
+    transform: rotate(90deg);
+    box-shadow: 0 0 15px rgba(26, 71, 42, 0.5);
+}
+
+
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+    border: 1px solid rgba(46, 204, 113, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #1a472a, #2ecc71);
+    border-radius: 5px;
+    border: 2px solid #0a0a0a;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #2ecc71, #1a472a);
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+}
+
+::-webkit-scrollbar-corner {
+    background: #0a0a0a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sidebar {
+        width: 270px;
+        padding: 0.8rem;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    h3 {
+        font-size: 1rem;
+        margin: 3rem 0;
+    }
+}
+
+/* Animation effects */
+.project-card {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-info {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #e2e8f0; /* Lighter color for better contrast */
+    letter-spacing: 0.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-preview {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #2ecc71;
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.2);
+    max-width: 300px; /* Add max-width */
+    height: 250px; /* Adjust height as needed */
+}
+
+.project-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tag.html { background: #FFE4E1; color: #FF6347; }
+.tag.css { background: #E6F3FF; color: #0066CC; }
+.tag.js { background: #FFF8E1; color: #FFA000; }
+.tag.figma { background: #d89ece; color: #9f4e90; }
+.tag.python { background: #F3E5F5; color: #7B1FA2; }
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.pdf-container {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+}
+
+.modal-xl {
+    max-width: 90% !important;
+}
+
+.case-button {
+    background: rgba(147, 51, 234, 0.8); /* Purple background */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    border: 1px solid #2ecc71; /* Green border */
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.3); /* Green glow */
+}
+
+.case-button:hover {
+    background: rgba(126, 34, 206, 0.9); /* Darker purple on hover */
+    box-shadow: 0 0 30px rgba(147, 51, 234, 0.5);
+    transform: translateY(-2px);
+}
